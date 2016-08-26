@@ -79,4 +79,4 @@ if __name__ == '__main__':
         instapaper = Instapaper(instapaper_user, instapaper_pass)
         instapaper.add(url)
     except Exception as e:
-        logging.exception(e)
+        logging.exception("Fatal error in __main__ loop")

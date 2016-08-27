@@ -1,11 +1,11 @@
 # Send2Instapaper
 
-OSX Automator service saving links to Instapaper
+mac OS Automator service for saving links to Instapaper
 
 This simple project consists of two bits:
 
 - mac OS Automator workflow which grabs link urls and calls the python script
-- Python script send3instapaper.py which adds links to Instapaper account. You can use the script from commandline independently.
+- Python script send3instapaper.py which adds link to Instapaper account. You can use the script from commandline independently.
 ```
 python send3instapaper.py -h
 usage: send3instapaper.py [-h] [-u USER] source

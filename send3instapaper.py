@@ -41,7 +41,7 @@ class Instapaper(object):
             logging.error('500: internal error')
         return False
 
-def get_keychain_pass(account=None, server=None):
+def get_keychain_pass(account=None, server='instapaper.com'):
     params = {
         'security': '/usr/bin/security',
         'command':  'find-internet-password',
@@ -55,14 +55,12 @@ def get_keychain_pass(account=None, server=None):
 
 def getArgs(argv=None):
     # Command line arguments.
-    parser = argparse.ArgumentParser(description =
-                        'Adds url to Instapaper',
+    parser = argparse.ArgumentParser(description = 'Add url to Instapaper',
                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('source', help='url of an article.')
     parser.add_argument('-u', '--user',
                         default="username@email.com",
                         help='user account at instapaper.com')
-
     return parser.parse_args(argv)
 
 if __name__ == '__main__':

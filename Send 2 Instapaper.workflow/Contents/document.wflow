@@ -165,8 +165,8 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>cd /Users/user/Documents/Python/utils
-/usr/local/bin/python send3instapaper.py $@</string>
+					<string>cd /Users/rrj/Documents/Python/utils
+/usr/local/bin/python send3instapaper.py -n $@</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -279,7 +279,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:355.000000</string>
+				<string>309.000000:535.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -289,7 +289,7 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>D7032BDD-78AF-4BBE-89E9-F948DCF6BC4A</key>
+		<key>8F921107-75C7-4BE2-A051-703BC54E924A</key>
 		<dict>
 			<key>from</key>
 			<string>DED309F7-C362-4098-A742-B59C3E676050 - DED309F7-C362-4098-A742-B59C3E676050</string>

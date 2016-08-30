@@ -8,7 +8,7 @@ This simple project consists of two bits:
 - Python script send3instapaper.py which adds link to Instapaper account. You can use the script from commandline independently.
 ```
 python send3instapaper.py -h
-usage: send3instapaper.py [-h] [-u USER] source
+usage: send3instapaper.py [-h] [-n] [-u USER] source
 
 Adds url to Instapaper
 
@@ -17,6 +17,8 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  -n, --notification    show notification via terminal-notifier (default:
+                        False)
   -u USER, --user USER  user account at instapaper.com (default:
                         username@email.com)
 ```
@@ -24,8 +26,8 @@ optional arguments:
 ## Installation:
 
 - download and unzip
-- move send3instapaper.py to wherever you keep your scripts
-- clik on 'Send 2 Instapaper.workflow' and add to Automator
+- move send3instapaper.py  [together with resources folder] to wherever you keep your scripts
+- clik on 'Send 2 Instapaper.workflow' and add the workflow to Automator
 - edit 'Run Shell Script' action in Automator and give it correct location of send3instapaper.py script
 - add your Instapaper username (email) and password to keychain like this
 
@@ -59,4 +61,9 @@ I am calling script this way cause I am using brew python and python is expectin
 - Now you have your private service that resides on your computer and is universal between browsers. You could now remove browser add-ons that you have used for saving to Instapaper. 
 - Nothing - expcept for sending a link - leaves your computer. 
 - Ask yourself if you could really trust closed source add-on that requires access to you entire browsing activity? And which requries that you be logged to your Instapaper account all the time? 
+
+## Credits:
+
+I have started from defunct project [Send-To-Instapaper-OSX-Service
+](https://github.com/Sankra/Send-To-Instapaper-OSX-Service) as an inspiration. 
 

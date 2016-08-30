@@ -4,8 +4,9 @@ mac OS Automator service for saving links to Instapaper
 
 This simple project consists of two bits:
 
-- mac OS Automator workflow which grabs link urls and calls the python script
+- mac OS Automator workflow which grabs link url and calls the python script
 - Python script send3instapaper.py which adds link to Instapaper account. You can use the script from commandline independently.
+
 ```
 python send3instapaper.py -h
 usage: send3instapaper.py [-h] [-n] [-u USER] source
@@ -43,6 +44,11 @@ security find-internet-password -g -a user@email.com -s "instapaper.com"
 ```
 /usr/local/bin/python send3instapaper.py --user=user@email.com $@
 ```
+- install terminal-notifier
+
+```
+brew install terminal-notifier
+```
 
 Sounds complicated? No. This should be easy enough for you.
 
@@ -53,8 +59,8 @@ I am using a simple one - grab a text in any application and extract URL action.
 - There are alternative ways to run a script in Automator - for example you could choose '/usr/bin/python' as your shell and put script into Automator. Or you could make a script executable.
 I am calling script this way cause I am using brew python and python is expecting some libraries and it works for me. 
 - I like this script cause it uses request. You could find on github similiar scripts that use urllib. I am no fan of calling urllib.
-- send3instapaper creates and keeps a log in a folder. You could look for errors - there. 
-- I might add notifications for added links in a future.
+- send3instapaper creates and keeps a log in a folder. Look there for errors - I am . 
+- I have added notifications. You will be notified when article is succesfully saved via terminal-notifier
 
 ## Benefits:
 

@@ -76,7 +76,7 @@ def send_notification(message=None):
     command = "%(notifier)s -message '%(message)s' -title '%(title)s' -open '%(url)s' -appIcon '%(icon)s' -contentImage '%(image)s'" % params
     logging.info(command)
     try:
-        return getoutput(command)
+        return commands.getoutput(command)
     except Exception as e:
         logging.exception('Sending notification failed')
         raise

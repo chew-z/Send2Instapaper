@@ -1,11 +1,14 @@
 # Send2Instapaper
 
-mac OS Automator service for saving links to Instapaper
+mac OS Automator service for saving links to Instapaper and also a service to grab webpages as markdown files.
 
-This simple project consists of two bits:
+This simple project consists of few bits:
 
 - mac OS Automator workflow which grabs link url and calls the python script
-- Python script send3instapaper.py which adds link to Instapaper account. You can use the script from commandline independently.
+- Python script send3instapaper.py which adds link to Instapaper account. You can use the script from commandline independently
+- a variant of send3instapaper.py (called send4instapaper.py) that I use on iOS in Pythonista for saving links without bloating my iPhone with Instapaper app
+- Another Automator workflow for saving web pages to Clipboard as markdown files (it is using html3md.py python script)
+
 
 ```
 python send3instapaper.py -h
@@ -29,13 +32,13 @@ optional arguments:
 - download and unzip
 - move send3instapaper.py  [together with resources folder] to wherever you keep your scripts
 - clik on 'Send 2 Instapaper.workflow' and add the workflow to Automator
-- edit 'Run Shell Script' action in Automator and give it correct location of send3instapaper.py script
+- edit 'Run Shell Script' action in Automator and give it correct location of send3instapaper.py script (different process for obtaining keychain credentials)
 - add your Instapaper username (email) and password to keychain like this
 
 ```
 security add-internet-password -a "user@email.com" -s instapaper.com -w This-is-secret-password
 
-security find-internet-password -g -a user@email.com -s "instapaper.com"
+security find-internet-password -g -a user@email.com -s "instapaper.com" -w
 ```
 
 - change default value of 'user' argument in send3instapaper.py getArgs() function to your account name

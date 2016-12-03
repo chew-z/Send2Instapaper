@@ -53,7 +53,7 @@ if __name__ == '__main__':
     url = appex.get_url()
     # hint - appex uses separate keychain
   print(url)
-  instapaper_user = 'xqqnjxltpq@outlook.com'
+  instapaper_user = 'user@email.com'
   instapaper_pass = keychain.get_password('Instapaper', instapaper_user)
   try:
     instapaper = Instapaper(instapaper_user, instapaper_pass)

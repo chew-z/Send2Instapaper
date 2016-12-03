@@ -59,10 +59,11 @@ Sounds complicated? No. This should be easy enough for you.
 
 - Send 2 Instapaper service should be now in Services menu now or sometimes under right click menu. This is however very tricky and depends on the context and the app you are using - there are many ways to skin a cat  and there are also many ways to grab something upon a cursor and extract a link in mac OS. 
 I am using a simple one - grab a text in any application and extract URL action. It works in browser bar and on a web page and that's good enough for me. I had been experimenting with smarter ways of url extraction but either it gets more complicated then I am wishing spend my time on or it is unreliable. Or both. 
+- scripts are now python3 compatible
 - There are alternative ways to run a script in Automator - for example you could choose '/usr/bin/python' as your shell and put script into Automator. Or you could make a script executable.
 I am calling script this way cause I am using brew python and python is expecting some libraries and it works for me. 
 - I like this script cause it uses request. You could find on github similiar scripts that use urllib. I am no fan of calling urllib.
-- send3instapaper creates and keeps a log in a folder. Look there for errors - I am . 
+- send3instapaper creates and keeps a log in a folder. Look there for errors. 
 - I have added notifications. You will be notified when article is succesfully saved via terminal-notifier
 
 ## Benefits:

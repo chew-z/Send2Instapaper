@@ -70,7 +70,7 @@
 				<key>Class Name</key>
 				<string>AMExtractDataFromTextAction</string>
 				<key>InputUUID</key>
-				<string>C08D7460-24AD-4B90-86D7-F33D63FE884C</string>
+				<string>9566B39C-93E0-4899-A1AF-0DB40A93C2BE</string>
 				<key>Keywords</key>
 				<array>
 					<string>extract</string>
@@ -83,9 +83,9 @@
 					<string>text</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>4D9D5EE3-8B43-413B-BB28-A51B509DE051</string>
+				<string>947AB2D0-F563-4D2E-98DC-83FE243CAB0C</string>
 				<key>UUID</key>
-				<string>DED309F7-C362-4098-A742-B59C3E676050</string>
+				<string>B311D878-5853-4F45-AF83-448DD7B65C0B</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>(* Primary Application used by this action goes here. *)</string>
@@ -166,7 +166,7 @@
 				<dict>
 					<key>COMMAND_STRING</key>
 					<string>cd /Users/rrj/Documents/Python/utils
-/usr/local/bin/python3 send3instapaper.py -n $@</string>
+/usr/local/bin/python3 html3md.py $@</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -289,10 +289,10 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>9E25839A-E90D-4628-95B9-E41BD37E1107</key>
+		<key>20D9D1E8-D912-49FE-BC7E-DAE8A362D418</key>
 		<dict>
 			<key>from</key>
-			<string>DED309F7-C362-4098-A742-B59C3E676050 - DED309F7-C362-4098-A742-B59C3E676050</string>
+			<string>B311D878-5853-4F45-AF83-448DD7B65C0B - B311D878-5853-4F45-AF83-448DD7B65C0B</string>
 			<key>to</key>
 			<string>B819E425-6E7B-417C-9F41-253B34F26BBA - B819E425-6E7B-417C-9F41-253B34F26BBA</string>
 		</dict>

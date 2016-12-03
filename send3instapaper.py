@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # script used by mac OS Automator Service to add links to Instapaper
-# works also with python3 but in OSX you have to install requests
+# python3  doesn't have commands
 
 import argparse
 import requests
 import sys
 import re
 # commands is python2 only!
-import commands
+# import commands
+import subprocess
 import logging
 
 class Instapaper(object):
@@ -54,11 +55,14 @@ def get_keychain_pass(account=None, server=None):
         'server':   server
     }
 
-    command = "%(security)s %(command)s -g -a %(account)s -s %(server)s" % params
+    command = "%(security)s %(command)s -g -a %(account)s -s %(server)s -w" % params
     logging.info(command)
     try :
-        outtext = commands.getoutput(command)
-        return re.match(r'password: "(.*)"', outtext).group(1)
+        # password = commands.getoutput(command)
+        password = subprocess.getoutput(command)
+        return password
+        # outtext = commands.getoutput(command)
+        # return re.match(r'password: "(.*)"', outtext).group(1)
     except Exception as e:
         logging.exception('Could not get password from keychain')
         raise
@@ -73,10 +77,11 @@ def send_notification(message=None):
         'image':  '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ClippingText.icns'
     }
 
-    command = "%(notifier)s -message '%(message)s' -title '%(title)s' -open '%(url)s' -appIcon '%(icon)s' -contentImage '%(image)s'" % params
+    command = "%(notifier)s -message \"%(message)s\" -title \"%(title)s\" -open \"%(url)s\" -appIcon \"%(icon)s\" -contentImage \"%(image)s\"" % params
     logging.info(command)
     try:
-        return commands.getoutput(command)
+        # return commands.getoutput(command)
+        return subprocess.getoutput(command)
     except Exception as e:
         logging.exception('Sending notification failed')
         raise
@@ -110,7 +115,7 @@ if __name__ == '__main__':
         instapaper = Instapaper(instapaper_user, instapaper_pass)
         title = instapaper.add(url)
         if notify and title is not None:
-            m = 'Article ' +  title + ' saved to Instapaper.'
+            m = 'Article: ' +  title + ' saved to Instapaper.'
             send_notification(m)
     except Exception as e:
         logging.exception("Fatal error in __main__ loop")

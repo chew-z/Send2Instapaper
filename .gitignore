@@ -1,6 +1,28 @@
-*.epub
+# Files #
+######################
 article.htm
+example.py
+*.epub
 *.html
 *.md
+!README.md
 
-example.py
+# Folders #
+######################
+/__pycache__/
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

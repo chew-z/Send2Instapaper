@@ -1,8 +1,8 @@
 #coding: utf-8
 # This version send4instapaper.py is for use on iOS ( with Pythonista)
 import requests
-import sys
-import re
+# import sys
+# import re
 # Pythonista specific
 import clipboard
 import appex

@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Grab HTML of article in Chrome, send to Instapaper as content aboiding trouble with paywalls
+# Grab HTML of article in Chrome, send to Instapaper as content avoiding trouble with paywalls
 import argparse
 import logging
 import instapaper
 import subprocess
+
+
+API_key = "INSTAPAPER_API_KEY"
 
 
 def get_keychain_pass(account=None, server=None):
@@ -16,7 +19,7 @@ def get_keychain_pass(account=None, server=None):
     }
 
     command = "%(security)s %(command)s -g -a %(account)s -s %(server)s -w" % params
-    logging.info(command)
+    # logging.info(command)
     try :
         password = subprocess.getoutput(command)
         return password
@@ -35,7 +38,7 @@ def send_notification(message=None):
     }
 
     command = "%(notifier)s -message \"%(message)s\" -title \"%(title)s\" -open \"%(url)s\" -appIcon \"%(icon)s\" -contentImage \"%(image)s\"" % params
-    logging.info(command)
+    # logging.info(command)
     try:
         return subprocess.getoutput(command)
     except Exception as e:
@@ -56,7 +59,7 @@ def getArgs(argv=None):
     parser.add_argument('-c', '--content',
                         help='Content as html/body/..')
     parser.add_argument('-f', '--file',
-                        help='Content in file..')
+                        help='Content passed in HTML file [in /tmp folder]..')
     return parser.parse_args(argv)
 
 if __name__ == '__main__':
@@ -73,7 +76,6 @@ if __name__ == '__main__':
     logging.info(url)
     logging.info(title)
     try:
-        API_key = "e25b1a3dc611401988da0352d4955a7e"
         API_secret = get_keychain_pass(API_key, 'instapaper.com')
         I = instapaper.Instapaper(API_key, API_secret)
         instapaper_pass = get_keychain_pass(instapaper_user, 'instapaper.com')
@@ -91,7 +93,7 @@ if __name__ == '__main__':
         b.save()
         m = 'Article: ' +  title + ' saved to Instapaper.'
         send_notification(m)
-
+        logging.info(m)
     except Exception as e:
         logging.exception("Fatal error in __main__ loop")
 

@@ -6,7 +6,7 @@
 
 import sys
 import requests
-# import re
+import re
 import html2text
 import datetime
 from bs4 import BeautifulSoup
@@ -15,6 +15,8 @@ import logging
 import instapaper
 import subprocess
 
+
+API_key = "INSTAPAPER_API_KEY"
 
 def get_keychain_pass(account=None, server=None):
     params = {
@@ -34,14 +36,13 @@ def get_keychain_pass(account=None, server=None):
         raise
 
 
-def send_instapaper(url=None, content=None, title=None, description=None, instapaper_user='xqqnjxltpq@outlook.com') -> None:
+def send_instapaper(url=None, content=None, title=None, description=None, instapaper_user='user@example.com') -> None:
     params = {
         'url': url,
         'content': content,
         'title': title,
         'description': description
     }
-    API_key = "e25b1a3dc611401988da0352d4955a7e"
     try:
         API_secret = get_keychain_pass(API_key, 'instapaper.com')
         I = instapaper.Instapaper(API_key, API_secret)
@@ -76,29 +77,37 @@ def process_article(article_title, article_filename='resources/article.htm') -> 
             html = r.read()
         soup = BeautifulSoup(html, "html.parser")
         # style = soup.find("style", class_="n-layout-head-css")
-        header = soup.find("h1", class_="article-headline")
-        lead = soup.find("div", class_="article__header-secondary")
+        if (title is not None):
+            header = title
+        else:
+            header = soup.find("h1", class_="topper__headline").get_text("\t", strip=True)
+        logging.info('header: ' + header)
+        lead = soup.find("div", class_="topper__standfirst")
+        logging.info('lead.text: ' + lead.text)
         article = soup.find(
-            "div", class_="article__body n-content-body p402_premium")
-
+            "div", class_= re.compile("article__body n-content-body.*"))
+        if article.str is not None:
+            logging.info('Scraped some article content')
         with open(html_filename, 'w') as a:
             a.write('<!DOCTYPE html>\n<html>\n<head>\n')
             a.write(
                 '<meta http-equiv=“Content-Type” content=“text/html; charset=utf-8”>\n')
             a.write('<link rel="stylesheet" href="ft.css">\n')
-            a.write('<title>' + header.get_text("|", strip=True) + '</title>\n')
+            a.write('<title>' + header + '</title>\n')
             # if style is not None:
             # a.write(str('<style class="n-layout-head-css">' + style.text + '</style>\n'))
             a.write('</head>\n<body>\n')
             if header is not None:
                 # Don't use h1 for title (cause of pandoc/epub). Lame!
-                h.feed('<h1>' + header.text + '</h1>')
+                h.feed('<h1>' + header + '</h1>')
                 a.write('<h1 class="article-headline">' +
-                        header.get_text(" | ", strip=True) + '</h1>\n')
+                        header + '</h1>\n')
+
             if lead is not None:
                 h.feed('<h2>' + lead.text + '</h2>')
                 a.write('<h2 class="article__header-secondary">' +
                         lead.get_text(" | ", strip=True) + '</h2>\n')
+
             if article is not None:
                 a.write(str(article))
                 h.feed(str(article))
@@ -108,7 +117,7 @@ def process_article(article_title, article_filename='resources/article.htm') -> 
             #     h.feed('<p>'+ chunk +'</p>')
         text = h.close()
         yaml = "---\n"
-        yaml += "title: " + header.get_text("\t", strip=True) + "\n"
+        yaml += "title: " + header + "\n"
         yaml += "publisher:  Financial Times\n"
         yaml += "lang: en-GB\n"
         # yaml += "stylesheet: _css/iBooks.css\n"

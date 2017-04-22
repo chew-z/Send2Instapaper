@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>tell application "Google Chrome"	set source to execute front window's active tab javascript "document.documentElement.outerHTML"	set theURL to URL of active tab of front window	set theTitle to title of active tab of front windowend tell# set theFile to "/Users/rrj/Documents/Python/Send2Instapaper/resources/_html/" &amp; theTitle &amp; ".html"set theFile to "/Users/rrj/Documents/Python/Send2Instapaper/resources/" &amp; "article.htm"open for access theFile with write permissionset eof of theFile to 0write quoted form of source as «class utf8» to theFileclose access theFilereturn {theTitle as «class utf8», quoted form of theURL as «class utf8»}end run</string>
+					<string>tell application "Google Chrome"	set source to execute front window's active tab javascript "document.documentElement.outerHTML"	# "document.body.outerHTML"	set theURL to URL of active tab of front window	set theTitle to title of active tab of front windowend tellset theFile to "/tmp/" &amp; theTitle &amp; ".html"# set theFile to "/Users/rrj/Documents/Python/utils/" &amp; "article.htm"open for access theFile with write permissionset eof of theFile to 0write quoted form of source as «class utf8» to theFileclose access theFilereturn {theTitle as «class utf8», quoted form of theURL as «class utf8», theFile as «class utf8»}end run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -161,8 +161,8 @@ end run</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>cd /Users/rrj/Documents/Python/Send2Instapaper/
-/usr/local/bin/python3 ft2text.py --title $1 --url $2 --instapaper</string>
+					<string>cd /Users/rrj/Documents/Python/Send2Instapaper
+/usr/local/bin/python3 cr2instapaper.py --user "xqqnjxltpq@outlook.com" --title $1 --url $2 --file $3</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -275,7 +275,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>449.000000:679.000000</string>
+				<string>449.000000:859.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -285,7 +285,7 @@ end run</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>382DD9C6-8CC0-4729-AA6A-9BDF93FC653F</key>
+		<key>74FD1BA9-4C05-44EE-9409-060E7B61A895</key>
 		<dict>
 			<key>from</key>
 			<string>3D2754B1-5984-4C50-99EC-6666053383B9 - 3D2754B1-5984-4C50-99EC-6666053383B9</string>
